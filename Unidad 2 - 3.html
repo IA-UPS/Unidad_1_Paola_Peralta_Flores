@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Daniela Cuesta - Paola Peralta Flores">
+
+<title>Introducción al Aprendizaje Estadístico con Aplicaciones en R</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="Unidad 2 - 3_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Unidad 2 - 3_files/libs/quarto-html/quarto.js"></script>
+<script src="Unidad 2 - 3_files/libs/quarto-html/popper.min.js"></script>
+<script src="Unidad 2 - 3_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Unidad 2 - 3_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Unidad 2 - 3_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Unidad 2 - 3_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Unidad 2 - 3_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Unidad 2 - 3_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Unidad 2 - 3_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Introducción al Aprendizaje Estadístico con Aplicaciones en R</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Daniela Cuesta - Paola Peralta Flores </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="capítulo-2" class="level1">
+<h1>Capítulo 2</h1>
+<p>á é í ó</p>
+</section>
+<section id="capitulo-3" class="level1">
+<h1>CAPITULO 3</h1>
+</section>
+<section id="regresión-lineal" class="level1">
+<h1>Regresión Lineal</h1>
+<p>Es una herramienta útil para predecir una respuesta cuantitativa. El enfoque de mínimos cuadrados se utiliza más comúnmente para ajustar este modelo.</p>
+<section id="regresión-lineal-simple" class="level2">
+<h2 class="anchored" data-anchor-id="regresión-lineal-simple">3.1 Regresión Lineal Simple</h2>
+<p>Es un método para predecir una respuesta cuantitativa, Y a partir de una única variable de predicción, X. Supone que existe aproximadamente una relación lineal entre X e Y.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%20from%202023-04-21%2023-16-26.png" width="90" height="20" class="figure-img"></p>
+</figure>
+</div>
+<p>El signo “≈” se lee “se modela aproximadamente como”. <code>ß0</code> y <code>ß1</code> son dos constantes desconocidas (coeficientes) que representan los términos de intersección y pendiente en el modelo lineal. Una vez que hayamos usado nuestros datos de entrenamiento para producir estimaciones:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%20from%202023-04-21%2023-26-20.png" width="84" height="24" class="figure-img"></p>
+</figure>
+</div>
+<p>donde ŷ indica una predicción de Y sobre la base de X = x. Se usa un símbolo de sombrero, para denotar el valor estimado de un parámetro desconocido o el valor predicho de la respuesta.</p>
+<section id="estimación-de-los-coeficientes" class="level3">
+<h3 class="anchored" data-anchor-id="estimación-de-los-coeficientes">3.1.1 Estimación de los coeficientes</h3>
+<p>En la práctica, <code>ß0</code> y <code>ß1</code> son desconocidos. Entonces, debemos usar datos para estimar los coeficientes.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%20from%202023-04-21%2023-37-37.png" width="168" height="31" class="figure-img"></p>
+</figure>
+</div>
+<p>representan n pares de observación, cada uno de los cuales consta de una medida de X y una medida de Y. Nuestro objetivo es encontrar una intersección β̂0 y una pendiente β̂1 tal que la línea resultante esté lo más cerca posible de los n = datos. Esto con minimizar el criterio de mínimos cuadrados.</p>
+<p>Esta es la diferencia entre el i-ésimo valor de respuesta observado y el i-ésimo valor de respuesta que es predicho por nuestro modelo lineal. Definimos la suma residual de cuadrados de dos formas:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%20from%202023-04-21%2023-59-28.png" class="img-fluid figure-img" width="136"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%20from%202023-04-22%2000-00-16.png" class="img-fluid figure-img" width="393"></p>
+</figure>
+</div>
+<p>Se define las estimaciones del coeficiente de mínimos cuadrados para la regresión lineal simple. Los minimizadores son:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%20from%202023-04-22%2000-01-48-02.png" class="img-fluid figure-img" width="149"></p>
+</figure>
+</div>
+</section>
+<section id="evaluación-de-la-precisión-de-las-estimaciones-del-coeficiente" class="level3">
+<h3 class="anchored" data-anchor-id="evaluación-de-la-precisión-de-las-estimaciones-del-coeficiente">3.1.2 Evaluación de la precisión de las estimaciones del coeficiente</h3>
+<p>Asumimos que la verdadera relación entre X e Y toma la forma Y = f (X) + ϵ para alguna función desconocida f, donde ϵ es un término de error aleatorio de media cero. Si f se aproxima mediante una función lineal:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%20from%202023-04-22%2000-13-47.png" class="img-fluid figure-img" width="109"></p>
+</figure>
+</div>
+<p>Aquí <code>ß0</code> es el valor esperado de Y cuando X = 0 (término de intersección), y <code>ß1</code> es la pendiente, el aumento promedio en Y asociado con un aumento de una unidad en X. Por lo general, asumimos que el término de error es independiente de X.</p>
+<section id="no-entendi-nada-de-aqui-asi-que-me-salte-al-siguiente-pero-no-termine" class="level5">
+<h5 class="anchored" data-anchor-id="no-entendi-nada-de-aqui-asi-que-me-salte-al-siguiente-pero-no-termine"><u><strong>NO ENTENDI NADA DE AQUI ASI QUE ME SALTE AL SIGUIENTE PERO NO TERMINE</strong></u></h5>
+</section>
+</section>
+<section id="evaluación-de-la-precisión-del-modelo" class="level3">
+<h3 class="anchored" data-anchor-id="evaluación-de-la-precisión-del-modelo">3.1.3 Evaluación de la precisión del modelo</h3>
+<p>Una vez rechazada la hipótesis nula a favor de la hipótesis alternativa, hay que cuantificar hasta qué punto el modelo se ajusta a los datos. La calidad de este ajuste se evalúa utilizando: el error estándar residual (RSE) y la estadística R2.</p>
+<section id="error-estándar-residual" class="level4">
+<h4 class="anchored" data-anchor-id="error-estándar-residual">Error estándar residual</h4>
+<p>Debido a la presencia de términos de error, no se puede predecir perfectamente Y a partir de X. El RSE es una estimación de la desviación estándar de ϵ. Es decir, es la cantidad promedio que la respuesta se desviará de la verdadera línea de regresión. Se calcula usando la fórmula:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%20from%202023-04-22%2000-26-07.png" class="img-fluid figure-img" width="181"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%20from%202023-04-22%2022-32-50.png" class="img-fluid figure-img" width="87"></p>
+</figure>
+</div>
+<p>El RSE se considera una medida de la falta de ajuste del modelo de precisión de las estimaciones del coeficiente a los datos. Si las predicciones obtenidas con el modelo están muy cerca de los valores reales de los resultados, es decir, si ŷi ≈ yi para i = 1, . . . , n—entonces RSE será pequeño, es decir, el modelo se ajusta a los datos. Por otro lado, si ŷi está muy lejos de yi para una o más observaciones, entonces el RSE puede ser bastante grande, lo que indica que el modelo no se ajusta bien a los datos.</p>
+</section>
+<section id="estadística-r²" class="level4">
+<h4 class="anchored" data-anchor-id="estadística-r²">Estadística R²</h4>
+<p>Proporciona una medida de ajuste alternativa. Toma la forma de una proporción, (varianza explicada), por lo que siempre toma un valor entre 0 y 1, y es independiente de la escala de Y. Fórmula:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%20from%202023-04-22%2022-38-58.png" class="img-fluid figure-img" width="144"></p>
+</figure>
+</div>
+<ul>
+<li><p>TSS es la suma total de los cuadrados, mide la varianza total en la respuesta Y, (cuadrados = cantidad de variabilidad inherente en la respuesta antes de que se realice la regresión).</p></li>
+<li><p>RSS mide la cantidad de variabilidad que queda sin explicar después de realizar la regresión.</p></li>
+<li><p>TSS − RSS mide la cantidad de variabilidad en la respuesta que se explica (o elimina) al realizar la regresión</p></li>
+<li><p>R² mide la proporción de variabilidad en Y que se puede explicar usando X. Una estadística R² cercana a 1 indica que una gran proporción de la variabilidad en la respuesta se explica por la regresión. Un número cercano a 0 indica lo contrario; esto puede ocurrir porque el modelo lineal es incorrecto, o la varianza del error σ² es alta, o ambas cosas.</p></li>
+</ul>
+<p>La estadística R² es una medida de la relación lineal entre X e Y, definida como:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%20from%202023-04-22%2022-51-05.png" class="img-fluid figure-img" width="237"></p>
+</figure>
+</div>
+</section>
+</section>
+</section>
+<section id="regresión-lineal-múltiple" class="level2">
+<h2 class="anchored" data-anchor-id="regresión-lineal-múltiple">3.2 Regresión lineal múltiple</h2>
+<p>Busca predecir una respuesta con más de un predictor. En lugar de ajustar un modelo de regresión lineal simple separado para cada predictor, es mejor extender el modelo de regresión lineal simple para que pueda acomodar varios predictores. Entonces el modelo de regresión lineal múltiple toma la forma:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%20from%202023-04-22%2023-01-39.png" class="img-fluid figure-img" width="197"></p>
+</figure>
+</div>
+<p>donde Xj representa el j-ésimo predictor y <code>ßj</code>cuantifica la asociación entre esa variable y la respuesta. Interpretamos <code>ßj</code> como el efecto promedio sobre Y de un aumento de una unidad en Xj, manteniendo fijos todos los demás predictores.</p>
+<section id="estimación-de-los-coeficientes-de-regresión" class="level3">
+<h3 class="anchored" data-anchor-id="estimación-de-los-coeficientes-de-regresión">3.2.1 Estimación de los coeficientes de regresión</h3>
+<p>Los coeficientes de regresión <code>ß0</code>, <code>ß1</code> . . . , <code>ßp</code> son desconocidos y deben estimarse. Se estian por:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%20from%202023-04-22%2023-11-02-01.png" class="img-fluid figure-img" width="249"></p>
+</figure>
+</div>
+<p>Los parámetros se estiman utilizando el mismo enfoque de mínimos cuadrados, para minimizar la suma de los residuos al cuadrado:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%20from%202023-04-22%2023-12-08.png" class="img-fluid figure-img" width="249"></p>
+</figure>
+</div>
+<p>Se puede usar cualquier paquete de software estadístico para calcular estas estimaciones de coeficientes.</p>
+</section>
+<section id="algunas-preguntas-importantes" class="level3">
+<h3 class="anchored" data-anchor-id="algunas-preguntas-importantes">3.2.2 Algunas preguntas importantes</h3>
+<ul>
+<li><strong><em>¿Es útil al menos uno de los predictores en la predicción de la respuesta?</em></strong></li>
+</ul>
+<p><em>¿Existe una relación entre la respuesta y los predictores?</em></p>
+<p>Si β1 = β2 = · · · = βp = 0, usamos una prueba de hipótesis para responder a esta pregunta. Probamos la hipótesis nula contra la alternativa:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%20from%202023-04-22%2023-47-36.png" class="img-fluid figure-img" width="172"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%20from%202023-04-22%2023-48-48.png" class="img-fluid figure-img" width="188"></p>
+</figure>
+</div>
+<p>Esta prueba de hipótesis se realiza calculando el estadístico F</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%20from%202023-04-22%2023-53-02.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Si los supuestos del modelo lineal son correctos, se puede demostrar que <img src="images/Screenshot%20from%202023-04-22%2023-55-25.png" class="img-fluid"> y que, siempre que H0 sea verdadera, <img src="images/Screenshot%20from%202023-04-22%2023-56-01.png" class="img-fluid"></p>
+<p>Por lo tanto, cuando no hay relación entre la respuesta y los predictores, se esperaría que el estadístico F tomara un valor cercano a 1. Por otro lado, si Ha es verdadera, entonces <img src="images/Screenshot%20from%202023-04-22%2023-56-45.png" class="img-fluid">, por lo que esperamos que F sea mayor que 1.</p>
+<p>A veces queremos probar que un subconjunto particular de <em>q</em> de los coeficientes es cero. Esto corresponde a una hipótesis nula.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%20from%202023-04-23%2000-02-06.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>donde por conveniencia hemos puesto las variables elegidas para omisión al final de la lista. En este caso ajustamos un segundo modelo que utiliza todas las variables excepto la última <em>q.</em> Suponga que la suma residual de cuadrados para ese modelo es <img src="images/Screenshot%20from%202023-04-23%2000-04-16.png" class="img-fluid">Entonces el estadístico F apropiado es:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%20from%202023-04-23%2000-05-02.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>El enfoque de usar una estadística F para probar cualquier asociación entre los predictores y la respuesta funciona cuando p es relativamente pequeño (en comparación con n). Si p &gt; n, entonces hay más coeficientes βj para estimar que observaciones a partir de las cuales estimarlos. En este caso, ni siquiera podemos ajustar el modelo de regresión lineal múltiple usando mínimos cuadrados, por lo que no se puede usar el estadístico F.</p>
+<ol start="2" type="1">
+<li><strong>¿Todos los predictores ayudan a explicar Y, o solo es útil un subconjunto de los predictores?</strong></li>
+</ol>
+<p><em>Decidir sobre variables importantes</em></p>
+<p>El primer paso es calcular el estadístico F y examinar el valor p asociado. Si concluimos sobre la base de ese valor p que al menos uno de los predictores está relacionado con la respuesta, entonces es natural preguntarse cuáles son los culpables. Si p es grande, es probable que hagan algunos descubrimientos falsos.</p>
+<p>Es posible que todos los predictores estén asociados con la respuesta, pero es más frecuente que la respuesta solo esté asociada con un subconjunto de los predictores. La tarea de determinar qué predictores están asociados con la respuesta, para ajustar un solo modelo que involucre solo esos predictores, se conoce como <em>selección de variables.</em></p>
+<p>Idealmente, nos gustaría realizar la selección de variables probando muchos modelos diferentes, cada uno de los cuales contiene un subconjunto diferente de predictores. Determinamos qué modelo es el mejor mediante el Cp de Mallow, el criterio de información de Akaike (AIC), el criterio de información bayesiano (BIC) y el R² ajustado.</p>
+<ul>
+<li><p><em>Selección de avance</em>: Modelo nulo, que contiene una intersección pero no predictores. Luego ajustamos p regresiones lineales simples y agregamos al modelo nulo la variable que resulta en el RSS más bajo. Luego agregamos a ese modelo la variable que resulta en el RSS más bajo para el nuevo modelo de dos variables. Este enfoque continúa hasta que se cumple alguna regla de parada.</p></li>
+<li><p><em>Selección hacia atrás</em>: Comenzamos con todas las variables del modelo y eliminamos la variable con el valor p más grande. Se ajusta el nuevo modelo de variable (p − 1). Este procedimiento continúa hasta que se alcanza una regla de parada.</p></li>
+<li><p><em>Selección mixta</em>: Combinación de selección hacia adelante y hacia atrás. Comenzamos sin variables en el modelo y, agregamos la variable que proporciona el mejor ajuste. Continuamos agregando variables una por una. Si en algún punto el valor p de una de las variables supera cierto umbral, lo eliminamos. Continuamos realizando estos pasos hacia adelante y hacia atrás hasta que todas las variables en el modelo tengan un valor p lo suficientemente bajo.</p></li>
+</ul>
+<p>La selección hacia atrás no se puede usar si p &gt; n, mientras que la selección hacia adelante siempre se puede usar. La selección mixta puede remediar esto.</p>
+<ol start="3" type="1">
+<li><strong>¿Qué tan bien se ajusta el modelo a los datos?</strong></li>
+</ol>
+<p><em>Ajuste del modelo</em></p>
+<p>Dos de las medidas numéricas más comunes del ajuste del modelo son RSE y R², la fracción de varianza explicada.</p>
+<p>En la regresión lineal múltiple R² es igual a Cor(Y, Ŷ )2 , el cuadrado de la correlación entre la respuesta y el modelo lineal ajustado. Un valor de R² cercano a 1 indica que el modelo explica una gran parte de la varianza en la variable de respuesta. En general, RSE se define como:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%20from%202023-04-23%2000-37-33.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Los modelos con más variables pueden tener un RSE más alto si la disminución de RSS es pequeña en relación con el aumento de p.</p>
+<ol start="4" type="1">
+<li><strong>Dado un conjunto de valores predictores, ¿qué valor de respuesta deberíamos predecir y qué tan precisa es nuestra predicción?</strong></li>
+</ol>
+<p><em>Predicciones</em></p>
+<p>Una vez que hemos ajustado el modelo de regresión múltiple, es sencillo aplicar al estimacion de coeficientes para predecir la respuesta Y sobre la base de un conjunto de valores para los predictores X1, X2, . . . , XP . Hay tres tipos de incertidumbre:</p>
+<ul>
+<li><p>El coeficiente β̂0, β̂1, . . . , β̂p son estimaciones para β0 , β1 , . . , βp. Es decir, el plano de mínimos cuadrados <img src="images/Screenshot%20from%202023-04-23%2000-47-18-01.png" class="img-fluid">es solo una estimación para el verdadero plano de regresión de la población <img src="images/Screenshot%20from%202023-04-23%2000-48-27.png" class="img-fluid"></p></li>
+<li><p>Suponer un modelo lineal para f (X) es una aproximación a la realidad, por lo que existe una fuente adicional de error potencialmente reducible que llamamos <em>sesgo del modelo.</em></p></li>
+<li><p>Incluso si conociéramos f (X), valores verdaderos de β0, β1, . . . , βp, el valor de respuesta no se puede predecir perfectamente debido al error aleatorio ϵ. Los intervalos de predicción son más amplios que los de confianza, porque incorporan tanto el error reducible como el error irreducible.</p></li>
+</ul>
+</section>
+</section>
+<section id="otras-consideraciones-en-el-modelo-de-regresión" class="level2">
+<h2 class="anchored" data-anchor-id="otras-consideraciones-en-el-modelo-de-regresión">3.3 Otras consideraciones en el modelo de regresión</h2>
+<section id="predictores-cualitativos" class="level3">
+<h3 class="anchored" data-anchor-id="predictores-cualitativos">3.3.1 Predictores cualitativos</h3>
+<section id="predictores-con-solo-dos-niveles" class="level4">
+<h4 class="anchored" data-anchor-id="predictores-con-solo-dos-niveles">Predictores con solo dos niveles</h4>
+<p>Si un predictor cualitativo (factor) solo tiene dos valores posibles, para incorporarlo en un modelo de regresión creamos una variable ficticia que toma dos posibles valores numéricos. Por ejemplo:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%20from%202023-04-23%2010-01-57.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>como predictor en la ecuación de regresión:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%20from%202023-04-23%2010-10-44.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>En lugar de un esquema de codificación 0/1, podríamos crear una variable ficticia:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%20from%202023-04-23%2010-17-58.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%20from%202023-04-23%2010-18-39.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>β0 puede interpretarse como el saldo promedio general de la tarjeta de crédito (ignorando efecto de propiedad de la casa), y β1 es la cantidad por la cual los propietarios y no propietarios tienen saldos de tarjetas de crédito que están por encima y por debajo del promedio, respectivamente.</p>
+</section>
+<section id="predictores-cualitativos-con-más-de-dos-niveles" class="level4">
+<h4 class="anchored" data-anchor-id="predictores-cualitativos-con-más-de-dos-niveles">Predictores cualitativos con más de dos niveles</h4>
+<p>En este caso, una sola variable ficticia no puede representar todos los valores posibles. Entonces, se debe crear variables ficticias adicionales. Por ejemplo:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%20from%202023-04-23%2010-24-03.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%20from%202023-04-23%2010-24-25.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Se obtiene el modelo:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%20from%202023-04-23%2010-25-14.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Ahora, β0 puede interpretarse como el saldo promedio de tarjetas de crédito para personas del Este, β1 puede interpretarse como la diferencia en el saldo promedio entre personas del Sur y del Este, y β2 puede interpretarse como la diferencia en el saldo promedio entre Oeste contra Este. Siempre habrá una variable ficticia menos que el número de niveles. El nivel sin variable ficticia se conoce como <em>línea de base</em>.</p>
+<p>Los coeficientes y sus valores p dependen de la elección de la codificación de la variable ficticia. Podemos usar una prueba F <img src="images/Screenshot%20from%202023-04-23%2010-37-04.png" class="img-fluid">.</p>
+<p>El uso de este enfoque de variable ficticia no presenta dificultades al incorporar predictores tanto cuantitativos como cualitativos.</p>
+</section>
+</section>
+<section id="extensiones-del-modelo-lineal" class="level3">
+<h3 class="anchored" data-anchor-id="extensiones-del-modelo-lineal">3.3.2 Extensiones del modelo lineal</h3>
+<p>El modelo de regresión lineal estándar proporciona resultados interpretables. Sin embargo, hace varias suposiciones altamente restrictivas. Establece que la relación entre los predictores y la respuesta es aditiva y lineal.</p>
+<ul>
+<li><p>Aditividad significa que la asociación entre un predictor Xj y la respuesta Y no depende de los valores de los otros predictores.</p></li>
+<li><p>Linealidad establece que el cambio en la respuesta Y asociado con un cambio de una unidad en Xj es constante, independientemente del valor de Xj.</p></li>
+</ul>
+<section id="eliminación-de-la-suposición-aditiva" class="level4">
+<h4 class="anchored" data-anchor-id="eliminación-de-la-suposición-aditiva">Eliminación de la suposición aditiva</h4>
+<p>Considere el modelo de regresión lineal estándar con dos variables:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%20from%202023-04-23%2011-09-33.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>De acuerdo con este modelo, un aumento de una unidad en X1 está asociado con un aumento promedio en Y de β1 unidades, independientemente del valor de X2. Una forma de extender este modelo es incluir un tercer predictor, llamado <em>término de interacción</em>. Esto da como resultado el modelo:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%20from%202023-04-23%2011-13-45.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Se puede reescribir como:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%20from%202023-04-23%2011-19-20.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>donde <img src="images/Screenshot%20from%202023-04-23%2011-26-29.png" class="img-fluid"> Dado que β̃1 ahora es una función de X2, la asociación entre X1 e Y ya no es constante: un cambio en el valor de X2 cambiará la asociación entre X1 e Y. Un argumento similar muestra que un cambio en el valor de X1 cambia la asociación entre X2 e Y.</p>
+</section>
+<section id="relaciones-no-lineales" class="level4">
+<h4 class="anchored" data-anchor-id="relaciones-no-lineales">Relaciones no lineales</h4>
+<p>En algunos casos, la verdadera relación entre la respuesta y los predictores puede no ser lineal. Utilizando regresión polinomial, se puede extender el modelo lineal para acomodar las relaciones no lineales.</p>
+</section>
+</section>
+<section id="problemas-potenciales" class="level3">
+<h3 class="anchored" data-anchor-id="problemas-potenciales">3.3.3 Problemas potenciales</h3>
+<p>Los más comunes al ajustar un modelo son los siguientes:</p>
+<ol type="1">
+<li>No linealidad de las relaciones respuesta-predictor.</li>
+<li>Correlación de términos de error.</li>
+<li>Varianza no constante de los términos de error.</li>
+<li>Valores atípicos.</li>
+<li>Puntos de alto apalancamiento.</li>
+<li>Colinealidad.</li>
+</ol>
+</section>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
