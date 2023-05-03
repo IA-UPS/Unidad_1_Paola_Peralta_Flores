@@ -177,3 +177,112 @@ ggplot(data=df2, aes(x=dose, y=len, fill=supp)) +
 # Usar position=position_dodge()
 ggplot(data=df2, aes(x=dose, y=len, fill=supp)) +
   geom_bar(stat="identity", position=position_dodge())
+# Cambiar colores
+p <- ggplot(data=df2, aes(x=dose, y=len, fill=supp)) +
+  geom_bar(stat="identity", color="black", position=position_dodge())+
+  theme_minimal()
+# Colores personalizados
+p + scale_fill_manual(values=c('#999999','#E69F00'))
+# Paleta de colores cerveceros
+p + scale_fill_brewer(palette="Blues")
+
+## AGREGAR ETIQUETAS
+# Barras esquivado
+ggplot(data=df2, aes(x=dose, y=len, fill=supp)) +
+  geom_bar(stat="identity", position=position_dodge())+
+  geom_text(aes(label=len), vjust=1.6, color="white",
+            position = position_dodge(0.9), size=3.5)+
+  scale_fill_brewer(palette="Paired")+
+  theme_minimal()
+# Barras apilado
+library(plyr)
+# Ordenar por dosis y suplemento
+df_sorted <- arrange(df2, dose, supp) 
+head(df_sorted)
+# Calcule la suma acumulada de len para cada dosis
+df_cumsum <- ddply(df_sorted, "dose",
+                   transform, label_ypos=cumsum(len))
+head(df_cumsum)
+# Crear el grafico de barras
+ggplot(data=df_cumsum, aes(x=dose, y=len, fill=supp)) +
+  geom_bar(stat="identity")+
+  geom_text(aes(y=label_ypos, label=len), vjust=1.6, 
+            color="white", size=3.5)+
+  scale_fill_brewer(palette="Paired")+
+  theme_minimal()
+# Etiquetas en medio de las barras
+df_cumsum <- ddply(df_sorted, "dose",
+                   transform, 
+                   label_ypos=cumsum(len) - 0.5*len)
+# Crear el grafico 
+ggplot(data=df_cumsum, aes(x=dose, y=len, fill=supp)) +
+  geom_bar(stat="identity")+
+  geom_text(aes(y=label_ypos, label=len), vjust=1.6, 
+            color="white", size=3.5)+
+  scale_fill_brewer(palette="Paired")+
+  theme_minimal()
+
+### DIAGRAMA DE BARRAS CON UN EJE X NUMERICO
+# Crear datos
+df2 <- data.frame(supp=rep(c("VC", "OJ"), each=3),
+                  dose=rep(c("0.5", "1", "2"),2),
+                  len=c(6.8, 15, 33, 4.2, 10, 29.5))
+head(df2)
+# Eje x tratado como variable continua
+df2$dose <- as.numeric(as.vector(df2$dose))
+ggplot(data=df2, aes(x=dose, y=len, fill=supp)) +
+  geom_bar(stat="identity", position=position_dodge())+
+  scale_fill_brewer(palette="Paired")+
+  theme_minimal()
+# Eje tratado como variable discreta
+df2$dose<-as.factor(df2$dose)
+ggplot(data=df2, aes(x=dose, y=len, fill=supp)) +
+  geom_bar(stat="identity", position=position_dodge())+
+  scale_fill_brewer(palette="Paired")+
+  theme_minimal()
+
+### GRAFICAS DE BARRAS CON BARRAS DE ERROR
+# Función para calcular la media y la desviación estándar para cada grupo
+# data: un marco de datos
+# varname: el nombre de una columna que contiene la variable para ser resumido
+# groupnames : vector de nombres de columna que se utilizará como variables de agrupación
+data_summary <- function(data, varname, groupnames){
+  require(plyr)
+  summary_func <- function(x, col){
+    c(mean = mean(x[[col]], na.rm=TRUE),
+      sd = sd(x[[col]], na.rm=TRUE))
+  }
+  data_sum<-ddply(data, groupnames, .fun=summary_func,
+                  varname)
+  data_sum <- rename(data_sum, c("mean" = varname))
+  return(data_sum)
+}
+# Resumen de datos
+df3 <- data_summary(ToothGrowth, varname="len", 
+                    groupnames=c("supp", "dose"))
+# Convertir dose en una variable de factor
+df3$dose=as.factor(df3$dose)
+head(df3)
+# Desviación estándar de la media como barra de error
+p <- ggplot(df3, aes(x=dose, y=len, fill=supp)) + 
+  geom_bar(stat="identity", position=position_dodge()) +
+  geom_errorbar(aes(ymin=len-sd, ymax=len+sd), width=.2,
+                position=position_dodge(.9))
+
+p + scale_fill_brewer(palette="Paired") + theme_minimal()
+
+### DIAGRAMAS DE BARRAS PERSONALIZADOS
+# Cambiar color por grupos
+# Agregar barras de error
+p + labs(title="Plot of length  per dose", 
+         x="Dose (mg)", y = "Length")+
+  scale_fill_manual(values=c('black','lightgray'))+
+  theme_classic()
+# Cambiar colores
+p + scale_fill_brewer(palette="Greens") + theme_minimal()
+
+p + scale_fill_brewer(palette="Reds") + theme_minimal()
+
+########################## GRAFICAS DE DENSIDAD ################################
+
+# ggplot(datos,aes(y=mivariable,fill=miclase))+geom_density()
