@@ -683,8 +683,7 @@ which.max(hatvalues(lm.fit))
 
 ### 3.6.3 Regresión Lineal Múltiple
 
--   La función `lm()`se utiliza para ajustar un modelo de
-    regresión lineal múltiple por mínimos cuadrados
+-   La función `lm()`se utiliza para ajustar un modelo de regresión lineal múltiple por mínimos cuadrados
 
 -   La sintaxis `lm(y ∼ x1 + x2 + x3)` se utiliza para ajustar un modelo con tres predictores, x1, x2 y x3.
 
@@ -790,8 +789,7 @@ summary(lm(medv ~ log(rm), data = Boston))
 
 ### 3.6.6 Predictores Cualitativos
 
-Se examinarán los datos de Carseats que forman parte
-de la biblioteca ISLR2. Intentaremos predecir las Ventas en 400 localidades basándonos en una serie de predictores.
+Se examinarán los datos de Carseats que forman parte de la biblioteca ISLR2. Intentaremos predecir las Ventas en 400 localidades basándonos en una serie de predictores.
 
 ```{r}
 head(Carseats)
@@ -815,11 +813,9 @@ contrasts(ShelveLoc)
 
 -   La variable ficticia `ShelveLocGood` toma un valor de 1 si la ubicación de la estantería es buena, y 0 en caso contrario.
 
--   La variable ficticia `ShelveLocMedium` es igual a 1 si la ubicación de la estantería es media, y 0 en caso
-    contrario.
+-   La variable ficticia `ShelveLocMedium` es igual a 1 si la ubicación de la estantería es media, y 0 en caso contrario.
 
--   Si el `coeﬃcient` para `ShelveLocGood` de la regresión es positivo indica que una buena ubicación de las estanterías, mientras que si `ShelveLocMedium` tiene un `coeﬃcient` positivo menor, indica una ubicación media de la estantería la cual se asocia con mayores
-    ventas.
+-   Si el `coeﬃcient` para `ShelveLocGood` de la regresión es positivo indica que una buena ubicación de las estanterías, mientras que si `ShelveLocMedium` tiene un `coeﬃcient` positivo menor, indica una ubicación media de la estantería la cual se asocia con mayores ventas.
 
 ### 3.6.7 Funciones de Escritura
 
