@@ -145,8 +145,7 @@ for(l in 1:length(datos.lista)){
 
 names(accuracy) <- names(datos.lista)
 
-### Este valor lo tienen que guardar solamente haremos por accuracy y kappa
-### tenemos que mirar el objeto matconf
+### Este valor lo tienen que guardar solamente haremos por accuracy y kappa tenemos que mirar el objeto matconf
 
 set.seed(123456789)
 
@@ -157,3 +156,33 @@ datos.train.lista <- lapply(datos.lista, function(x) x[idx,])
 datos.test.lista <- lapply(datos.lista, function(x) x[-idx,])
 
 cvfit_lasso <- cv.glmnet(as.matrix(datos.train.lista$raw[,-ncol(datos)]),as.numeric(datos.train.lista$raw$clase),type.measure = "class",family="multinom", alpha = 0,nfolds = 4)
+
+
+### Regresion de Ridge
+
+set.seed(123456789)
+trControl <- trainControl(method = 'cv',
+                          number = 10)
+myfnlog <- function(x) train(clase ~ ., data = x, method = "multinom", trControl = trControl, trace = F)
+
+ridge.lista <- lapply(datos.train.lista,myfnlog)
+
+ridge.pred <- vector("list",length = length(datos.lista))
+
+for(l in 1:length(datos.lista)){
+  
+  ridge.pred[[l]] <- predict(logistica.lista[[l]],datos.test.lista[[l]])
+  
+}
+
+names(ridge.pred) <- names(datos.lista)
+accuracy <- vector("numeric",length = length(datos.lista))
+
+for(l in 1:length(datos.lista)){
+  
+  accuracy[l] <- confusionMatrix(datos.test.lista$raw$clase,ridge.pred[[l]])$overall[1]
+  
+}
+
+names(accuracy) <- names(datos.lista)
+
