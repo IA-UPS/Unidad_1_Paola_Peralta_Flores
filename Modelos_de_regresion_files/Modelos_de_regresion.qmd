@@ -1,10 +1,11 @@
 ---
-title: "Programa_Modelos_Regresion"
-format: html
+title: "Modelos de Clasificacion"
+format: pdf
 editor: visual
+author: Daniela Cuesta - Paola Peralta Flores
 ---
 
-## Quarto
+Se realiza los diferentes metodos de clasificacion.
 
 ```{r}
 library(ggplot2)
