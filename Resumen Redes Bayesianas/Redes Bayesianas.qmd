@@ -27,7 +27,7 @@ Es decir, una red bayesiana es un grafo dirigido sin ciclos en el que cada nodo 
 
 Se observan varios nodos, donde cada nodo representa una variable, como X1, X2,\..., Xn, y cada arco representa una relación directa de dependencia entre las variables. La dirección de los arcos indica que la variable hacia la cual apunta el arco depende de la variable que se encuentra en su origen.
 
-![Fig. 1. Ejemplo de Redes Bayesianas](images/Screenshot%20from%202023-05-20%2022-26-01.png){fig-align="center"}
+![Fig. 1. Ejemplo de Redes Bayesianas](images/Screenshot%20from%202023-05-20%2022-26-01.png){fig-alt="Ejemplo de Redes Bayesianas" fig-align="center"}
 
 ## Redes Bayesianas Dinamicas
 
