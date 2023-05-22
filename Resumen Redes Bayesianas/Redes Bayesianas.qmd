@@ -9,8 +9,7 @@ author: Daniela Cuesta - Paola Peralta Flores
 
 Se están realizando investigaciones que abordan un conjunto extenso de variables con relaciones complejas entre ellas. Para hacer frente a este desafío, las redes bayesianas han surgido como herramientas estadísticas en el campo de la Inteligencia Artificial.
 
-En sus inicios, estos modelos se construían manualmente con la ayuda de expertos, pero en los últimos años se han desarrollado técnicas para aprender tanto la estructura como los parámetros del modelo a partir de datos. Las redes bayesianas, también conocidas como redes causales probabilísticas, ofrecen una representación gráfica de un conjunto de variables aleatorias y las relaciones que existen entre ellas, su característica distintiva con respecto a otros modelos es que sus arcos son dirigidos y representan dependencia condicional entre las variables, se puede decir que este enfoque resulta muy efectivo para abordar problemas que involucran incertidumbre, donde las conclusiones no pueden basarse únicamente en un conocimiento
-previo del problema.
+En sus inicios, estos modelos se construían manualmente con la ayuda de expertos, pero en los últimos años se han desarrollado técnicas para aprender tanto la estructura como los parámetros del modelo a partir de datos. Las redes bayesianas, también conocidas como redes causales probabilísticas, ofrecen una representación gráfica de un conjunto de variables aleatorias y las relaciones que existen entre ellas, su característica distintiva con respecto a otros modelos es que sus arcos son dirigidos y representan dependencia condicional entre las variables, se puede decir que este enfoque resulta muy efectivo para abordar problemas que involucran incertidumbre, donde las conclusiones no pueden basarse únicamente en un conocimiento previo del problema.
 
 Las Redes Bayesianas son sistemas expertos que representan el conocimiento incierto mediante probabilidades. Se refiere a un grafo acrilico dirigido que describe la distribucion de probabilidad conjunta que gobierna un conjunto de variables aleatorias. Los nodos puedes representar cualquier tipo de variable, ya sea un parametro medible, una variable latente o una hipotesis.
 
@@ -23,7 +22,7 @@ Se divide en cuatro partes:
 
 Es decir, una red bayesiana es un grafo dirigido sin ciclos en el que cada nodo representa una variable aleatoria con una función de probabilidad condicional asociada. La estructura de la red proporciona información sobre las dependencias e independencias condicionales entre las variables. Estas relaciones simplifican la representación de la función de probabilidad conjunta como el producto de las funciones de probabilidad condicional de cada variable.
 
-## **Interpretación de la gráfica** 
+## **Interpretación de la gráfica**
 
 Se observan varios nodos, donde cada nodo representa una variable, como X1, X2,\..., Xn, y cada arco representa una relación directa de dependencia entre las variables. La dirección de los arcos indica que la variable hacia la cual apunta el arco depende de la variable que se encuentra en su origen.
 

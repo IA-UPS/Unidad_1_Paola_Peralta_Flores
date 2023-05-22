@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Maria Jose Bustamante - Paola Peralta Flores">
+
+<title>Analisis de Datos</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="Analisis Descriptivo_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Analisis Descriptivo_files/libs/quarto-html/quarto.js"></script>
+<script src="Analisis Descriptivo_files/libs/quarto-html/popper.min.js"></script>
+<script src="Analisis Descriptivo_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Analisis Descriptivo_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Analisis Descriptivo_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Analisis Descriptivo_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Analisis Descriptivo_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Analisis Descriptivo_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Analisis Descriptivo_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Analisis de Datos</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Maria Jose Bustamante - Paola Peralta Flores </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="analisis-descriptivo-e-inferencial" class="level2">
+<h2 class="anchored" data-anchor-id="analisis-descriptivo-e-inferencial">Analisis Descriptivo e Inferencial</h2>
+<p>Librerias qur vamos a utilizar.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnet) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: Matrix</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loaded glmnet 4.1-7</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: lattice</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(e1071) </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggstatsplot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>You can cite this package as:
+     Patil, I. (2021). Visualizations with statistical details: The 'ggstatsplot' approach.
+     Journal of Open Source Software, 6(61), 3167, doi:10.21105/joss.03167</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>corrplot 0.92 loaded</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lavaan)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>This is lavaan 0.6-15
+lavaan is FREE software! Please report any bugs.</code></pre>
+</div>
+</div>
+<p>Leer los datos y renombrar las variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>Datos <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"./processed.cleveland.data"</span>,<span class="at">header=</span><span class="cn">FALSE</span>,<span class="at">sep=</span><span class="st">","</span>,</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">na.strings =</span> <span class="st">'?'</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(Datos) <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="st">"Edad"</span>, <span class="st">"Sexo"</span>, <span class="st">"DPecho"</span>, <span class="st">"PresArtRep"</span>, <span class="st">"Colesterol"</span>,<span class="st">"AzuA"</span>, </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"ECGRep"</span>,<span class="st">"FCardiaca"</span>,<span class="st">"Angina"</span>, <span class="st">"ST"</span>,<span class="st">"PenST"</span>, <span class="st">"Vasos"</span>, </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"Estado"</span>, <span class="st">"Enfermedad"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Exploracion de los datos. Con la funcion <code>head</code> se muestran las primeras siete filas del conjunto de datos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Datos,<span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Edad Sexo DPecho PresArtRep Colesterol AzuA ECGRep FCardiaca Angina  ST PenST
+1   63    1      1        145        233    1      2       150      0 2.3     3
+2   67    1      4        160        286    0      2       108      1 1.5     2
+3   67    1      4        120        229    0      2       129      1 2.6     2
+4   37    1      3        130        250    0      0       187      0 3.5     3
+5   41    0      2        130        204    0      2       172      0 1.4     1
+6   56    1      2        120        236    0      0       178      0 0.8     1
+7   62    0      4        140        268    0      2       160      0 3.6     3
+  Vasos Estado Enfermedad
+1     0      6          0
+2     3      3          2
+3     2      7          1
+4     0      3          0
+5     0      3          0
+6     0      3          0
+7     2      3          3</code></pre>
+</div>
+</div>
+<p>Definimos los datos por sus categorias.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>Datos<span class="sc">$</span>Sexo[Datos<span class="sc">$</span>Sexo<span class="sc">==</span><span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">"Masculino"</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>Datos<span class="sc">$</span>Sexo[Datos<span class="sc">$</span>Sexo<span class="sc">==</span><span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="st">"Femenino"</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>Datos<span class="sc">$</span>DPecho[Datos<span class="sc">$</span>DPecho<span class="sc">==</span><span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">"Tipo 1"</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>Datos<span class="sc">$</span>DPecho[Datos<span class="sc">$</span>DPecho<span class="sc">==</span><span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="st">"Tipo 2"</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>Datos<span class="sc">$</span>DPecho[Datos<span class="sc">$</span>DPecho<span class="sc">==</span><span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">"Tipo 3"</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>Datos<span class="sc">$</span>DPecho[Datos<span class="sc">$</span>DPecho<span class="sc">==</span><span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="st">"Tipo 4"</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>Datos<span class="sc">$</span>AzuA[Datos<span class="sc">$</span>AzuA<span class="sc">==</span><span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">"Verdadero"</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>Datos<span class="sc">$</span>AzuA[Datos<span class="sc">$</span>AzuA<span class="sc">==</span><span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="st">"Falso"</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>Datos<span class="sc">$</span>ECGRep[Datos<span class="sc">$</span>ECGRep<span class="sc">==</span><span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="st">"Nivel 0"</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>Datos<span class="sc">$</span>ECGRep[Datos<span class="sc">$</span>ECGRep<span class="sc">==</span><span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">"Nivel 1"</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>Datos<span class="sc">$</span>ECGRep[Datos<span class="sc">$</span>ECGRep<span class="sc">==</span><span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="st">"Nivel 2"</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>Datos<span class="sc">$</span>Angina[Datos<span class="sc">$</span>Angina<span class="sc">==</span><span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">"Si"</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>Datos<span class="sc">$</span>Angina[Datos<span class="sc">$</span>Angina<span class="sc">==</span><span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="st">"No"</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>Datos<span class="sc">$</span>PenST[Datos<span class="sc">$</span>PenST<span class="sc">==</span><span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">"Valor 1"</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>Datos<span class="sc">$</span>PenST[Datos<span class="sc">$</span>PenST<span class="sc">==</span><span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="st">"Valor 2"</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>Datos<span class="sc">$</span>PenST[Datos<span class="sc">$</span>PenST<span class="sc">==</span><span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">"Valor 3"</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>Datos<span class="sc">$</span>Estado[Datos<span class="sc">$</span>Estado<span class="sc">==</span><span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">"N"</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>Datos<span class="sc">$</span>Estado[Datos<span class="sc">$</span>Estado<span class="sc">==</span><span class="dv">6</span>] <span class="ot">&lt;-</span> <span class="st">"DF"</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>Datos<span class="sc">$</span>Estado[Datos<span class="sc">$</span>Estado<span class="sc">==</span><span class="dv">7</span>] <span class="ot">&lt;-</span> <span class="st">"DR"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Agregamos una columna, modificando las etapas de “Enfermedad”:</p>
+<ul>
+<li><p>Saludable (0 - No)</p></li>
+<li><p>Enfermo (1,2,3,4 - Si).</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> Datos<span class="sc">$</span>Enfermedad</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>Corazon <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">"Corazon"</span><span class="ot">=</span><span class="fu">c</span>(c))</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>Corazon<span class="sc">$</span>Corazon[Corazon<span class="sc">$</span>Corazon<span class="sc">==</span><span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="st">"No"</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>Corazon<span class="sc">$</span>Corazon[Corazon<span class="sc">$</span>Corazon<span class="sc">==</span><span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">"Si"</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>Corazon<span class="sc">$</span>Corazon[Corazon<span class="sc">$</span>Corazon<span class="sc">==</span><span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="st">"Si"</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>Corazon<span class="sc">$</span>Corazon[Corazon<span class="sc">$</span>Corazon<span class="sc">==</span><span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">"Si"</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>Corazon<span class="sc">$</span>Corazon[Corazon<span class="sc">$</span>Corazon<span class="sc">==</span><span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="st">"Si"</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>Datos <span class="ot">&lt;-</span> <span class="fu">cbind</span>(Datos, Corazon)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Permite visualizar los datos de la tabla de mejor manera</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>pander<span class="sc">::</span><span class="fu">pandoc.table</span>(</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Datos)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+---------------------------------------------------------------------------
+ Edad     Sexo      DPecho   PresArtRep   Colesterol     AzuA      ECGRep  
+------ ----------- -------- ------------ ------------ ----------- ---------
+  63    Masculino   Tipo 1      145          233       Verdadero   Nivel 2 
+
+  67    Masculino   Tipo 4      160          286         Falso     Nivel 2 
+
+  67    Masculino   Tipo 4      120          229         Falso     Nivel 2 
+
+  37    Masculino   Tipo 3      130          250         Falso     Nivel 0 
+
+  41    Femenino    Tipo 2      130          204         Falso     Nivel 2 
+
+  56    Masculino   Tipo 2      120          236         Falso     Nivel 0 
+---------------------------------------------------------------------------
+
+Table: Table continues below
+
+ 
+----------------------------------------------------------------------------
+ FCardiaca   Angina   ST     PenST    Vasos   Estado   Enfermedad   Corazon 
+----------- -------- ----- --------- ------- -------- ------------ ---------
+    150        No     2.3   Valor 3     0       DF         0          No    
+
+    108        Si     1.5   Valor 2     3       N          2          Si    
+
+    129        Si     2.6   Valor 2     2       DR         1          Si    
+
+    187        No     3.5   Valor 3     0       N          0          No    
+
+    172        No     1.4   Valor 1     0       N          0          No    
+
+    178        No     0.8   Valor 1     0       N          0          No    
+----------------------------------------------------------------------------</code></pre>
+</div>
+</div>
+<section id="analisis-univariante" class="level3">
+<h3 class="anchored" data-anchor-id="analisis-univariante">Analisis Univariante</h3>
+<p>Se obtienen las medidas de tendencia central, valores minimos y maximos y los quartiles de las variables especificadas. Se visualizan las variables de manera independiente, utilizando variables categoricas y variables cuantitativas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>V.Cuantitativas <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">"Edad"</span> <span class="ot">=</span> Datos<span class="sc">$</span>Edad,<span class="st">"PresArtRep"</span> <span class="ot">=</span> Datos<span class="sc">$</span>PresArtRep,</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Colesterol"</span> <span class="ot">=</span> Datos<span class="sc">$</span>Colesterol,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"FCardiaca"</span> <span class="ot">=</span> Datos<span class="sc">$</span>FCardiaca,<span class="st">"ST"</span> <span class="ot">=</span> Datos<span class="sc">$</span>ST)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Se realiza una tabla con todas estas variables</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">summary</span>(V.Cuantitativas))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Edad</th>
+<th style="text-align: left;">PresArtRep</th>
+<th style="text-align: left;">Colesterol</th>
+<th style="text-align: left;">FCardiaca</th>
+<th style="text-align: left;">ST</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Min. :29.00</td>
+<td style="text-align: left;">Min. : 94.0</td>
+<td style="text-align: left;">Min. :126.0</td>
+<td style="text-align: left;">Min. : 71.0</td>
+<td style="text-align: left;">Min. :0.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">1st Qu.:48.00</td>
+<td style="text-align: left;">1st Qu.:120.0</td>
+<td style="text-align: left;">1st Qu.:211.0</td>
+<td style="text-align: left;">1st Qu.:133.5</td>
+<td style="text-align: left;">1st Qu.:0.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Median :56.00</td>
+<td style="text-align: left;">Median :130.0</td>
+<td style="text-align: left;">Median :241.0</td>
+<td style="text-align: left;">Median :153.0</td>
+<td style="text-align: left;">Median :0.80</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Mean :54.44</td>
+<td style="text-align: left;">Mean :131.7</td>
+<td style="text-align: left;">Mean :246.7</td>
+<td style="text-align: left;">Mean :149.6</td>
+<td style="text-align: left;">Mean :1.04</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">3rd Qu.:61.00</td>
+<td style="text-align: left;">3rd Qu.:140.0</td>
+<td style="text-align: left;">3rd Qu.:275.0</td>
+<td style="text-align: left;">3rd Qu.:166.0</td>
+<td style="text-align: left;">3rd Qu.:1.60</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Max. :77.00</td>
+<td style="text-align: left;">Max. :200.0</td>
+<td style="text-align: left;">Max. :564.0</td>
+<td style="text-align: left;">Max. :202.0</td>
+<td style="text-align: left;">Max. :6.20</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Se calcula la desviacion estandar de las variables especificadas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">"Variables"</span><span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Edad"</span>,<span class="st">"PresArtRep"</span>,<span class="st">"Colesterol"</span>,<span class="st">"FCardiaca"</span>,<span class="st">"ST"</span>),<span class="st">"Desviacion Estandar"</span><span class="ot">=</span> <span class="fu">c</span>(<span class="fu">sqrt</span>(<span class="fu">var</span>(Datos<span class="sc">$</span>Edad)),<span class="fu">sqrt</span>(<span class="fu">var</span>(Datos<span class="sc">$</span>PresArtRep)),<span class="fu">sqrt</span>(<span class="fu">var</span>(Datos<span class="sc">$</span>Colesterol)),<span class="fu">sqrt</span>(<span class="fu">var</span>(Datos<span class="sc">$</span>FCardiaca)),<span class="fu">sqrt</span>(<span class="fu">var</span>(Datos<span class="sc">$</span>ST))))</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variables</th>
+<th style="text-align: right;">Desviacion.Estandar</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Edad</td>
+<td style="text-align: right;">9.038662</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PresArtRep</td>
+<td style="text-align: right;">17.599748</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Colesterol</td>
+<td style="text-align: right;">51.776918</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FCardiaca</td>
+<td style="text-align: right;">22.875003</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ST</td>
+<td style="text-align: right;">1.161075</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="analisis-bivariante" class="level3">
+<h3 class="anchored" data-anchor-id="analisis-bivariante">Analisis Bivariante</h3>
+<p>Se realiza una correlacion de las variables almacenadas en “V.Cuantitativas”</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>Cor <span class="ot">&lt;-</span> <span class="fu">cor</span>(V.Cuantitativas)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(Cor, <span class="at">method=</span><span class="st">"number"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Analisis-Descriptivo_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ul>
+<li>En la grafica se oberva esta correlacion, variando entre los colores rojo y azul, diferenciando de esta manera cuando la correlacion entre variables se hace cada vez más fuerte. En este caso las variables son muy débiles, ninguna supera el 0.5 para concluir que existe al menos una correlacion moderada o fuerte entre las variables.</li>
+</ul>
+<p>Se realiza una matriz de varianzas y covarianzas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>Covarianza <span class="ot">&lt;-</span> <span class="fu">cov</span>(V.Cuantitativas)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(Covarianza)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Edad</th>
+<th style="text-align: right;">PresArtRep</th>
+<th style="text-align: right;">Colesterol</th>
+<th style="text-align: right;">FCardiaca</th>
+<th style="text-align: right;">ST</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Edad</td>
+<td style="text-align: right;">81.69742</td>
+<td style="text-align: right;">45.328678</td>
+<td style="text-align: right;">97.787489</td>
+<td style="text-align: right;">-81.423065</td>
+<td style="text-align: right;">2.138850</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PresArtRep</td>
+<td style="text-align: right;">45.32868</td>
+<td style="text-align: right;">309.751120</td>
+<td style="text-align: right;">118.573340</td>
+<td style="text-align: right;">-18.258005</td>
+<td style="text-align: right;">3.865638</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Colesterol</td>
+<td style="text-align: right;">97.78749</td>
+<td style="text-align: right;">118.573340</td>
+<td style="text-align: right;">2680.849190</td>
+<td style="text-align: right;">-4.064652</td>
+<td style="text-align: right;">2.799282</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FCardiaca</td>
+<td style="text-align: right;">-81.42307</td>
+<td style="text-align: right;">-18.258005</td>
+<td style="text-align: right;">-4.064652</td>
+<td style="text-align: right;">523.265775</td>
+<td style="text-align: right;">-9.112209</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ST</td>
+<td style="text-align: right;">2.13885</td>
+<td style="text-align: right;">3.865638</td>
+<td style="text-align: right;">2.799282</td>
+<td style="text-align: right;">-9.112209</td>
+<td style="text-align: right;">1.348095</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

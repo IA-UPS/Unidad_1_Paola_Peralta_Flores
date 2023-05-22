@@ -1,0 +1,141 @@
+---
+title: "Analisis de Datos"
+format: pdf
+editor: visual
+author: Maria Jose Bustamante - Paola Peralta Flores
+---
+
+## Analisis Descriptivo e Inferencial
+
+Librerias que vamos a utilizar.
+
+```{r}
+library(ggplot2)
+library(ggpubr)
+library(dplyr)
+library(glmnet) 
+library(caret) 
+library(e1071) 
+library(ggstatsplot)
+library(corrplot)
+library(lavaan)
+```
+
+Leer los datos y renombrar las variables.
+
+```{r}
+Datos <- read.csv("./processed.cleveland.data",header=FALSE,sep=",",
+                  na.strings = '?')
+names(Datos) <- c( "Edad", "Sexo", "DPecho", "PresArtRep", "Colesterol","AzuA", 
+                   "ECGRep","FCardiaca","Angina", "ST","PenST", "Vasos", 
+                   "Estado", "Enfermedad")
+```
+
+Exploracion de los datos. Con la funcion `head` se muestran las primeras seis filas del conjunto de datos.
+
+```{r}
+head(Datos)
+```
+
+Definimos los datos por sus categorias.
+
+```{r}
+Datos$Sexo[Datos$Sexo==1] <- "Masculino"
+Datos$Sexo[Datos$Sexo==0] <- "Femenino"
+Datos$DPecho[Datos$DPecho==1] <- "Tipo 1"
+Datos$DPecho[Datos$DPecho==2] <- "Tipo 2"
+Datos$DPecho[Datos$DPecho==3] <- "Tipo 3"
+Datos$DPecho[Datos$DPecho==4] <- "Tipo 4"
+Datos$AzuA[Datos$AzuA==1] <- "Verdadero"
+Datos$AzuA[Datos$AzuA==0] <- "Falso"
+Datos$ECGRep[Datos$ECGRep==0] <- "Nivel 0"
+Datos$ECGRep[Datos$ECGRep==1] <- "Nivel 1"
+Datos$ECGRep[Datos$ECGRep==2] <- "Nivel 2"
+Datos$Angina[Datos$Angina==1] <- "Si"
+Datos$Angina[Datos$Angina==0] <- "No"
+Datos$PenST[Datos$PenST==1] <- "Valor 1"
+Datos$PenST[Datos$PenST==2] <- "Valor 2"
+Datos$PenST[Datos$PenST==3] <- "Valor 3"
+Datos$Estado[Datos$Estado==3] <- "N"
+Datos$Estado[Datos$Estado==6] <- "DF"
+Datos$Estado[Datos$Estado==7] <- "DR"
+```
+
+Agregamos una columna, modificando las etapas de "Enfermedad":
+
+-   Saludable (0 - No)
+
+-   Enfermo (1,2,3,4 - Si).
+
+```{r}
+c <- Datos$Enfermedad
+Corazon <- data.frame("Corazon"=c(c))
+Corazon$Corazon[Corazon$Corazon==0] <- "No"
+Corazon$Corazon[Corazon$Corazon==1] <- "Si"
+Corazon$Corazon[Corazon$Corazon==2] <- "Si"
+Corazon$Corazon[Corazon$Corazon==3] <- "Si"
+Corazon$Corazon[Corazon$Corazon==4] <- "Si"
+
+Datos <- cbind(Datos, Corazon)
+
+# Permite visualizar los datos de la tabla de mejor manera
+pander::pandoc.table(
+head(Datos)) 
+```
+
+### Analisis Univariante
+
+Se obtienen las medidas de tendencia central, valores minimos y maximos y los quartiles de las variables especificadas. Se visualizan las variables de manera independiente, utilizando variables categoricas y variables cuantitativas.
+
+```{r}
+V.Cuantitativas <- data.frame("Edad" = Datos$Edad,"PresArtRep" = Datos$PresArtRep,
+                              "Colesterol" = Datos$Colesterol,
+                              "FCardiaca" = Datos$FCardiaca,"ST" = Datos$ST)
+# Se realiza una tabla con todas estas variables
+knitr::kable(summary(V.Cuantitativas))
+```
+
+Se calcula la desviacion estandar de las variables especificadas.
+
+```{r}
+z <- data.frame("Variables"= c("Edad","PresArtRep","Colesterol","FCardiaca","ST"),"Desv Est"= c(sqrt(var(Datos$Edad)),sqrt(var(Datos$PresArtRep)),sqrt(var(Datos$Colesterol)),sqrt(var(Datos$FCardiaca)),sqrt(var(Datos$ST))))
+knitr::kable(z)
+```
+
+### Analisis Bivariante
+
+Se realiza una correlacion de las variables almacenadas en "V.Cuantitativas"
+
+```{r}
+Cor <- cor(V.Cuantitativas)
+corrplot(Cor, method="number")
+```
+
+-   En la grafica se oberva esta correlacion, variando entre los colores rojo y azul, diferenciando de esta manera cuando la correlacion entre variables se hace cada vez más fuerte. En este caso las variables son muy débiles, ninguna supera el 0.5 para concluir que existe al menos una correlacion moderada o fuerte entre las variables.
+
+Se realiza una matriz de varianzas y covarianzas.
+
+```{r}
+Covarianza <- cov(V.Cuantitativas)
+knitr::kable(Covarianza)
+```
+
+Se realiza la comprobacion de que las variables sean independientes.
+
+```{r}
+chi <- chisq.test(table(Datos$FCardiaca,
+                        Datos$Colesterol))
+
+```
+
+Analisis PCA
+
+```{r}
+PCA <- prcomp(Datos[,c("Edad", "PresArtRep","Colesterol", "FCardiaca", "ST")])
+
+PCA
+
+summary(PCA)
+
+biplot(PCA)
+```

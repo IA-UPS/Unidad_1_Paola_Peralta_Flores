@@ -2,12 +2,12 @@
 title: "Predicción de la diabetes "
 format: html
 editor: visual
-author: "Edmond Géraud"
+author: Daniela Cuesta - Paola Peralta Flores
 ---
 
 # Intro
 
-Este sería un ejemplo de examen El siguiente conjunto de datos, consuste en predecir a pacientes basandonos en datos clínicos, si puede padecer diabetes o no.
+Este sería un ejemplo de examen. El siguiente conjunto de datos, consiste en predecir a pacientes basandonos en datos clínicos, si puede padecer diabetes o no.
 
 Antes de cualquier método de clasificación, regresión o lo que sea, necesitamos explorar los datos.
 
