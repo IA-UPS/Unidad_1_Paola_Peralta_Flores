@@ -5,7 +5,7 @@ editor: visual
 author: Daniela Cuesta - Paola Peralta Flores
 ---
 
-# Resumen
+# Resumen 
 
 Se están realizando investigaciones que abordan un conjunto extenso de variables con relaciones complejas entre ellas. Para hacer frente a este desafío, las redes bayesianas han surgido como herramientas estadísticas en el campo de la Inteligencia Artificial.
 
