@@ -83,6 +83,20 @@ pander::pandoc.table(
 head(Datos)) 
 ```
 
+### Analisis PCA 
+
+Tecnica útil para resumir y explorar datos complejos, reducir la dimensionalidad y encontrar las variables y combinaciones lineales más relevantes en un conjunto de datos.
+
+```{r}
+PCA <- prcomp(Datos[,c("Edad", "PresArtRep","Colesterol", "FCardiaca", "ST")])
+
+PCA
+
+summary(PCA)
+
+biplot(PCA)
+```
+
 ### Analisis Univariante
 
 Se obtienen las medidas de tendencia central, valores minimos y maximos y los quartiles de las variables especificadas. Se visualizan las variables de manera independiente, utilizando variables categoricas y variables cuantitativas.
@@ -101,6 +115,28 @@ Se calcula la desviacion estandar de las variables especificadas.
 z <- data.frame("Variables"= c("Edad","PresArtRep","Colesterol","FCardiaca","ST"),"Desv Est"= c(sqrt(var(Datos$Edad)),sqrt(var(Datos$PresArtRep)),sqrt(var(Datos$Colesterol)),sqrt(var(Datos$FCardiaca)),sqrt(var(Datos$ST))))
 knitr::kable(z)
 ```
+
+Se realiza un histograma para una de las variables cuantitativas.
+
+```{r}
+ggplot(V.Cuantitativas, aes(Edad)) + 
+  geom_histogram(aes(fill=after_stat(count)), bins=10, color="white") +
+  geom_vline(aes(xintercept=mean(Edad)), color="red") +
+  geom_vline(aes(xintercept=median(Edad)), color= "yellow") +
+  labs(title = "Histograma de Edad",
+       x = "Edades",
+       y = "Frecuencia") +
+  scale_fill_continuous(name="Frecuencia") +
+  theme_classic()
+```
+
+-   El promedio de edad entre pacientes resulto de 54 años, con una mediana de 56 años (cercana al valor de la media, pero mayor), la línea roja refleja el valor de la media y la amarilla el valor de la mediana, también se puede observar que los datos tienen más concentración en las edades entre 50 a 60 años.
+
+    ```{r}
+    boxplot(V.Cuantitativas$PresArtRep, xlab = "Presion Arterial en Reposo (mmHg) ",col = "lightgreen",bg = 'transparent',horizontal = T)
+    ```
+
+-   El 25% de los pacientes presentaron una frecuencia menor o igual a 133.5, el 50% de ellos una frecuencia menor o igual a 153, y el 75% una frecuencia menor o igual a 166. Los datos tienen un comportamiento asimétrico positivo, y hay existencia de valores atípicos.
 
 ### Analisis Bivariante
 
@@ -128,14 +164,10 @@ chi <- chisq.test(table(Datos$FCardiaca,
 
 ```
 
-Analisis PCA
+Se realiza la matriz de diagramas de dispoersion.
 
 ```{r}
-PCA <- prcomp(Datos[,c("Edad", "PresArtRep","Colesterol", "FCardiaca", "ST")])
-
-PCA
-
-summary(PCA)
-
-biplot(PCA)
+pairs(V.Cuantitativas[,1:5], pch = 19,  cex = 0.5,
+      col = "Green",
+            lower.panel=NULL)
 ```
